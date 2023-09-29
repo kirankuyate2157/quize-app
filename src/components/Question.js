@@ -1,23 +1,29 @@
 import React from "react";
 
-function Question({ question, choices, onSelectAnswer, type }) {
+function Question({ question, onSelectAnswer }) {
   return (
     <div>
       <p
         className='text-lg font-semibold mb-2'
-        dangerouslySetInnerHTML={{ __html: question }}
+        dangerouslySetInnerHTML={{ __html: question.question }}
       />
-      {type === "multiple" ? (
+      {question.type === "multiple" ? (
         <ul>
-          {choices.map((choice, index) => (
+          {question.incorrect_answers.map((incorrectChoice, index) => (
             <li
               key={index}
-              onClick={() => onSelectAnswer(choice)}
+              onClick={() => onSelectAnswer(incorrectChoice)}
               className='cursor-pointer hover:bg-gray-200 rounded-md p-2 mb-1'
             >
-              {choice}
+              {incorrectChoice}
             </li>
           ))}
+          <li
+            onClick={() => onSelectAnswer(question.correct_answer)}
+            className='cursor-pointer hover:bg-gray-200 rounded-md p-2 mb-1'
+          >
+            {question.correct_answer}
+          </li>
         </ul>
       ) : (
         <div>

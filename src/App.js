@@ -35,7 +35,7 @@ function App() {
       setVisitedQuestions([...visitedQuestions, currentIndex]);
     }
   };
-
+  console.log(questions);
   const handleSelectAnswer = (answer) => {
     const updatedUserAnswers = [...userAnswers];
     updatedUserAnswers[currentIndex] = answer;
@@ -67,10 +67,10 @@ function App() {
         />
         {!quizSubmitted ? (
           <div>
-            <Question
+            {/* <Question
               question={currentQuestion}
               onSelectAnswer={handleSelectAnswer}
-            />
+            /> */}
             <div className='flex justify-between mt-4'>
               <button
                 onClick={handleNextQuestion}
